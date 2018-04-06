@@ -119,19 +119,19 @@ https://cloud.google.com/dataproc/docs/concepts/accessing/cluster-web-interfaces
 
 En fait, DataProc va aussi créer des VMs, 1 master (si pas de HA) et X slaves.
 
-![](img/DataProce_Cluster.png)
+![](img/DataProc_Cluster.png)
 
-![](img/DataProce_Cluster01.png)
+![](img/DataProc_Cluster01.png)
 
-![](img/DataProce_Cluster02.png)
+![](img/DataProc_Cluster02.png)
 
-![](img/DataProce_Cluster03.png)
+![](img/DataProc_Cluster03.png)
 
-![](img/DataProce_Cluster04.png)
+![](img/DataProc_Cluster04.png)
 
-![](img/DataProce_VM.png)
+![](img/DataProc_VM.png)
 
-![](img/DataProce_disk.png)
+![](img/DataProc_disk.png)
 
 La conf Firewall/VPC n'a pas fonctionné du premier coup, j'ai du faire ça à la main.
 
