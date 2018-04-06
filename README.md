@@ -115,8 +115,23 @@ Une fois ça fait, c'est une sorte de Jupyter dans lequel on peut accéder aux s
 
 DataProc possède une IHM Web pour créer un cluster de la taille souhaité. Mais comme je voulais faire du DataLab avec, une documentation explique comment lancer DataProc en ligne de commande avec le SDK gcloud, et spécifier un script de boot pour lancer DataLab.
 
+https://cloud.google.com/dataproc/docs/concepts/accessing/cluster-web-interfaces
+
 En fait, DataProc va aussi créer des VMs, 1 master (si pas de HA) et X slaves.
 
+![](img/DataProce_Cluster.png)
+
+![](img/DataProce_Cluster01.png)
+
+![](img/DataProce_Cluster02.png)
+
+![](img/DataProce_Cluster03.png)
+
+![](img/DataProce_Cluster04.png)
+
+![](img/DataProce_VM.png)
+
+![](img/DataProce_disk.png)
 
 La conf Firewall/VPC n'a pas fonctionné du premier coup, j'ai du faire ça à la main.
 
@@ -124,9 +139,13 @@ Une fois les VMs créées, la Master possède un YARN, SparkHistoryServer, etc. 
 
 Le script de boot permet de lancer une image Docker de Datalab sur le noeud Master, et configurer Datalab pour PySpark. A la fin ça fonctionne.
 
+https://github.com/GoogleCloudPlatform/dataproc-initialization-actions/tree/master/datalab
+
 ![](img/Datalab.png)
 
+On a du PySpark mais l'API PySpark n'est pas aussi avancé que l'API Spark Scala, et du coup on ne peut pas utiliser BigQuery comme DataFrame ! L'astuce est de recopier le résultat d'une query en local pour la lire en RDD!!! Sinon, utiliser l'API DataFrame de Spark pour lire directement les fichiers CSV/JSON/Parquet/Avro sur GoogleFS.
 
+https://cloud.google.com/dataproc/docs/tutorials/bigquery-connector-spark-example
 
 
 
