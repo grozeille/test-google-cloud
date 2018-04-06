@@ -99,7 +99,33 @@ On peut ensuite créer des dashboard à partir de ça (et même rafraichir régu
 
 ## DataLab
 
+Petite déception, Google DataLab n'a pas d'IHM Web d'administration. Il faut passer par la ligne de commande du SDK gcloud.
+
+https://cloud.google.com/datalab/docs/quickstart
+
+Cela va créer une VM avec des disques, un réseau VPC et une règle Firewall pour accépter le 22.
+
+Ca va ensuite créer un tunnel SSH pour pouvoir ouvrir le notebook sur http://localhost:8080
+
+Le tunnel n'a pas fonctionné du premier coup, j'ai du le faire à la main...
+
+Une fois ça fait, c'est une sorte de Jupyter dans lequel on peut accéder aux services de Google comme BigQuery, mais pas Google DataProc cad le Spark as a Service.
+
 ## DataProc
+
+DataProc possède une IHM Web pour créer un cluster de la taille souhaité. Mais comme je voulais faire du DataLab avec, une documentation explique comment lancer DataProc en ligne de commande avec le SDK gcloud, et spécifier un script de boot pour lancer DataLab.
+
+En fait, DataProc va aussi créer des VMs, 1 master (si pas de HA) et X slaves.
+
+
+La conf Firewall/VPC n'a pas fonctionné du premier coup, j'ai du faire ça à la main.
+
+Une fois les VMs créées, la Master possède un YARN, SparkHistoryServer, etc. Comme pour DataLab, c'est pénible car il faut faire un tunnel SSH pour voir les IHMs... je n'ai pas osé ouvrir le Firewall directement sur les IHMs, elles ne sont pas sécurisées.
+
+Le script de boot permet de lancer une image Docker de Datalab sur le noeud Master, et configurer Datalab pour PySpark. A la fin ça fonctionne.
+
+![](img/Datalab.png)
+
 
 
 
